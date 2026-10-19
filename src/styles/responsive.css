@@ -1,0 +1,111 @@
+/* Responsive adjustments. Phones get their own composition, not a shrunk desktop. */
+
+@media (max-width: 1180px) {
+  .lab__main { grid-template-columns: minmax(0, 1fr); }
+  .pipe__body { grid-template-columns: minmax(12rem, 26%) minmax(0, 1fr); }
+  .pipe__trace { grid-column: 2; }
+  .pipe__tg { position: absolute; right: var(--sc-gutter); bottom: 1.5rem; width: min(22rem, 40vw); z-index: 5; background: var(--sc-canvas); }
+  .pipe__tg.is-on + .pipe__trace { opacity: 0; }
+  .work__grid .tile--feature { grid-column: span 12; grid-row: span 1; }
+  .work__grid .tile--wide, .work__grid .tile--tall { grid-column: span 6; grid-row: span 1; }
+  .work__grid .tile { grid-column: span 6; }
+  .prod { grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); }
+  .prod__side { grid-column: 1 / -1; }
+}
+
+@media (max-width: 960px) {
+  .build__grid, .about__grid, .contact__grid { grid-template-columns: minmax(0, 1fr); }
+  .build__lead { position: static; }
+  .case__cols, .case__steps { grid-template-columns: minmax(0, 1fr); }
+  .lab__filters-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .srow { grid-template-columns: minmax(0, 1fr); gap: 0.75rem; }
+  .pd__sec { grid-template-columns: minmax(0, 1fr); gap: 0.5rem; }
+}
+
+/* Navigation collapses */
+@media (max-width: 860px) {
+  .bar__nav, .bar__cta { display: none; }
+  .bar__menu { display: inline-flex; }
+}
+
+/* Hero: recompose for narrow screens. The console becomes a quiet backdrop at the
+   top and the headline sits below it, so nothing overlaps the copy. */
+@media (max-width: 900px) {
+  .hero__stage { --con-w: calc(100vw - var(--sc-gutter) * 2); }
+  /* The console's parallax pushes it about 60px lower than this at the top of
+     the page, so the CSS position starts above where it is first seen. */
+  .hero__console { top: calc(var(--bar-h) - 2.75rem); right: var(--sc-gutter); left: var(--sc-gutter); width: auto; }
+  .hero__console-in { translate: none; }
+  .con__canvas { aspect-ratio: 560 / 240; }
+  .hero__log { display: none; }
+  .hero__copy { max-width: none; right: var(--sc-gutter); bottom: clamp(1.5rem, 5vh, 3rem); }
+  /* Sized so the longest line ("automated workflows.") always fits the width. */
+  .hero__title { font-size: min(9vw, 4.4rem); }
+  .con__foot { font-size: 0.66rem; }
+  .hero__sub { font-size: var(--sc-t-base); margin-top: 1rem; }
+  .hero__role { margin-bottom: 0.75rem; }
+  .hero__cta { margin-top: 1.25rem; }
+  .cn span { display: none; }
+}
+
+@media (max-width: 760px) {
+  .pipe__head { grid-template-columns: minmax(0, 1fr); }
+  .pipe__head .sc-label, .pipe__note { display: none; }
+  .pipe__head h2 { font-size: var(--sc-t-xl); max-width: 22ch; }
+  .pipe__stage { gap: 0.9rem; padding-top: calc(var(--bar-h) + 0.25rem); }
+  .pipe__track { grid-template-columns: repeat(9, minmax(0, 1fr)); }
+  .pipe__lab, .pipe__cnt { display: none; }
+  .pipe__body { grid-template-columns: minmax(0, 1fr); gap: 0.75rem; grid-template-rows: auto minmax(0, 1fr); }
+  .pipe__body { grid-template-rows: auto auto minmax(0, 1fr); }
+  .pipe__narr { grid-column: 1; grid-row: 1; gap: 0.35rem; }
+  .pipe__panel { grid-column: 1; grid-row: 2; align-self: start; }
+  .pipe__trace { grid-column: 1; grid-row: 3; }
+  .pp__row { padding: 0.35rem 0; }
+  .pipe__narr { gap: 0.35rem; }
+  .pipe__narr h3 { font-size: var(--sc-t-lg); }
+  .pipe__narr p:last-child { font-size: var(--sc-t-xs); }
+  .pipe__panel { padding: 0.75rem 0.85rem; }
+  .pp__row { grid-template-columns: 5.5rem minmax(0, 1fr); gap: 0.6rem; font-size: var(--sc-t-xs); }
+  .pipe__tg { left: var(--sc-gutter); right: var(--sc-gutter); width: auto; bottom: 1rem; }
+  .pipe__tg .tg__msg { font-size: var(--sc-t-xs); padding: 0.7rem 0.8rem; }
+
+  .lab__nodes { grid-template-columns: minmax(0, 1fr); gap: 1.25rem; }
+  .node { min-height: 3.4rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0.55rem 0.85rem; }
+  .node__s { white-space: nowrap; }
+  .lab__nodes li[data-i] { grid-column: 1 !important; grid-row: auto !important; }
+  .lab__filters-grid { grid-template-columns: minmax(0, 1fr); }
+  .lab__bar .btn { flex: 1 1 auto; }
+  .lab__sep { display: none; }
+  .tabpanel { max-height: none; min-height: 18rem; }
+  .bars li { grid-template-columns: 6.5rem 1fr 2.8rem; }
+
+  .work__grid { grid-template-columns: minmax(0, 1fr); }
+  .work__grid .tile, .work__grid .tile--feature, .work__grid .tile--wide, .work__grid .tile--tall { grid-column: 1 / -1; }
+  .prod { grid-template-columns: minmax(0, 1fr); }
+  .inquiry__row { grid-template-columns: minmax(0, 1fr); }
+  .step { width: clamp(16rem, 76vw, 22rem); }
+  .step--lead { width: clamp(17rem, 82vw, 24rem); }
+
+  .pd { inset: 0; width: 100%; max-width: none; max-height: none; height: 100%; border-radius: 0; border: 0; }
+  .pd h2 { font-size: var(--sc-t-2xl); }
+  .case__cols--code, .pairs p { grid-template-columns: minmax(0, 1fr); }
+  .contact__links a { grid-template-columns: 5rem 1fr; }
+}
+
+/* Short phones: the console becomes a faint backdrop so it never competes with the headline. */
+@media (max-width: 900px) and (max-height: 720px) {
+  .hero__console { opacity: 0.16; }
+}
+
+@media (max-width: 420px) {
+  .btn { padding: 0 1rem; }
+  .hero__cta .btn { flex: 1 1 100%; }
+  .lab__head .sc-display, .case__head .sc-display, .work__head .sc-display { max-width: none; }
+}
+
+/* Short laptop screens: keep the pipeline stage inside one viewport. */
+@media (min-width: 761px) and (max-height: 760px) {
+  .pipe__head h2 { font-size: var(--sc-t-xl); }
+  .pipe__note { display: none; }
+  .pp__row { padding: 0.28rem 0; }
+}
